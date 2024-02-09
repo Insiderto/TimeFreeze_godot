@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://igwljx8pn5nt"]
+
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_qfbib"]
+[ext_resource type="Texture2D" uid="uid://1sgrytq3mq7n" path="res://test.png" id="2_nd8hh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kh3g5"]
+radius = 17.1172
+
+[sub_resource type="Gradient" id="Gradient_o5rjk"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 0)
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(119, 294)
+script = ExtResource("1_qfbib")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kh3g5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_nd8hh")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+speed_scale = 32.0
+texture = ExtResource("2_nd8hh")
+gravity = Vector2(0, 0)
+color_ramp = SubResource("Gradient_o5rjk")

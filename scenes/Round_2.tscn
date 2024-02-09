@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctk0phi1u8x8a"]
+
+[ext_resource type="TileSet" uid="uid://dmfgu7r3ug1j4" path="res://tilesets/basic_tile_set.tres" id="1_1wwj1"]
+[ext_resource type="PackedScene" uid="uid://igwljx8pn5nt" path="res://Prefabs/player.tscn" id="2_1b6my"]
+[ext_resource type="PackedScene" uid="uid://b178ycvjvkqqe" path="res://canvas_layer.tscn" id="3_q6n0p"]
+
+[node name="Round2" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2(0.5, 0.5)
+tile_set = ExtResource("1_1wwj1")
+format = 2
+layer_0/tile_data = PackedInt32Array(327680, 262144, 2, 327681, 262144, 2, 327682, 262144, 2, 327683, 262144, 2, 327684, 262144, 2, 327685, 262144, 2, 327686, 262144, 2, 327687, 262144, 2, 327688, 262144, 2, 327689, 262144, 2, 393215, 262144, 2, 393214, 262144, 2)
+
+[node name="Player" parent="." instance=ExtResource("2_1b6my")]
+position = Vector2(63, 612)
+
+[node name="CanvasLayer" parent="." instance=ExtResource("3_q6n0p")]
