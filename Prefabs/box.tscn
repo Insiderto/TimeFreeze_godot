@@ -3,13 +3,14 @@
 [ext_resource type="Texture2D" uid="uid://cc1y1fkajqr6v" path="res://Objects/Box.png" id="1_5fdxu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0c4no"]
-friction = 100.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_40u55"]
 size = Vector2(256, 255)
 
 [node name="Box" type="RigidBody2D"]
 position = Vector2(432, 452)
+collision_layer = 4
+collision_mask = 7
 physics_material_override = SubResource("PhysicsMaterial_0c4no")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

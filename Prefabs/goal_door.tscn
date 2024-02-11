@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dg34on4u4lbdu"]
+
+[ext_resource type="Script" path="res://scripts/GoalDoor.gd" id="1_d6gfb"]
+[ext_resource type="Texture2D" uid="uid://blfmpr0vddb21" path="res://Objects/DoorOpen.png" id="2_vgfa1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eoykt"]
+size = Vector2(53, 92)
+
+[node name="GoalDoor" type="Area2D"]
+position = Vector2(834, 210)
+collision_layer = 8
+script = ExtResource("1_d6gfb")
+
+[node name="DoorOpen" type="Sprite2D" parent="."]
+scale = Vector2(0.20107, 0.2)
+texture = ExtResource("2_vgfa1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_eoykt")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
