@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://b1fgowxjo7c7b"]
+
+[ext_resource type="TileSet" uid="uid://dmfgu7r3ug1j4" path="res://tilesets/basic_tile_set.tres" id="1_m1lce"]
+[ext_resource type="PackedScene" uid="uid://igwljx8pn5nt" path="res://Prefabs/player.tscn" id="2_18goc"]
+[ext_resource type="PackedScene" uid="uid://b178ycvjvkqqe" path="res://canvas_layer.tscn" id="3_3nebq"]
+[ext_resource type="PackedScene" uid="uid://y3xfgej8vhqe" path="res://Prefabs/platform.tscn" id="4_qks8y"]
+[ext_resource type="Script" path="res://scenes/GoalDoor.gd" id="5_j4sog"]
+[ext_resource type="Texture2D" uid="uid://blfmpr0vddb21" path="res://Objects/DoorOpen.png" id="6_jnhco"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qd724"]
+size = Vector2(53, 92)
+
+[node name="Round2" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2(0.5, 0.5)
+tile_set = ExtResource("1_m1lce")
+format = 2
+layer_0/tile_data = PackedInt32Array(327688, 262144, 2, 327689, 262144, 2, 327687, 131072, 2, 327686, 131072, 2, 327685, 131072, 2, 327684, 131072, 2, 327681, 65536, 3, 327682, 196608, 3, 262146, 196608, 3, 262145, 65536, 3, 196610, 196608, 3, 196609, 65536, 3, 131074, 196608, 3, 131073, 65536, 3, 65537, 196608, 2, 65538, 0, 3, 327683, 131072, 2, 327680, 131072, 2, 393215, 131072, 2)
+
+[node name="Player" parent="." instance=ExtResource("2_18goc")]
+position = Vector2(222, 100)
+
+[node name="CanvasLayer" parent="." instance=ExtResource("3_3nebq")]
+
+[node name="Box" parent="." instance=ExtResource("4_qks8y")]
+position = Vector2(583, 219)
+mass = 0.17
+
+[node name="GoalDoor" type="Area2D" parent="."]
+position = Vector2(834, 210)
+script = ExtResource("5_j4sog")
+
+[node name="DoorOpen" type="Sprite2D" parent="GoalDoor"]
+position = Vector2(289.15, 380.4)
+scale = Vector2(0.20107, 0.2)
+texture = ExtResource("6_jnhco")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalDoor"]
+position = Vector2(289.15, 381.4)
+shape = SubResource("RectangleShape2D_qd724")
+
+[connection signal="body_entered" from="GoalDoor" to="GoalDoor" method="_on_body_entered"]

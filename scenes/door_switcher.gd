@@ -11,6 +11,8 @@ func _process(delta):
 	pass
 
 
-func _on_body_entered(body: Node2D):
-	if ($DoorOpen.visible):
-		get_tree().change_scene_to_file("res://scenes/Round_1.tscn")
+func _on_body_entered(body):
+	$door_enabled.visible = true
+	$door_disabled.visible = false
+	$"../GoalDoor/DoorLocked".visible = false
+	$"../GoalDoor/DoorOpen".visible = true
