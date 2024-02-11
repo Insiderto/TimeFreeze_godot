@@ -14,3 +14,4 @@ func _process(delta):
 func _on_body_entered(body):
 	if ($DoorOpen.visible):
 		get_tree().change_scene_to_file("res://scenes/chapter_1/Round_1.tscn")
+

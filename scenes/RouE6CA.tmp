@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://bmm8swnf5xapd"]
+
+[ext_resource type="PackedScene" uid="uid://dlbf4i8fqvsh3" path="res://Prefabs/tile_map.tscn" id="1_nx4xv"]
+[ext_resource type="PackedScene" uid="uid://igwljx8pn5nt" path="res://Prefabs/player.tscn" id="2_cinkp"]
+[ext_resource type="PackedScene" uid="uid://dg34on4u4lbdu" path="res://Prefabs/goal_door.tscn" id="2_dyh10"]
+[ext_resource type="PackedScene" uid="uid://b7l33lcqep251" path="res://Prefabs/box.tscn" id="3_rrpdv"]
+[ext_resource type="PackedScene" uid="uid://4wvdksa5rwuu" path="res://Prefabs/camera_2d.tscn" id="6_6matc"]
+[ext_resource type="PackedScene" uid="uid://b178ycvjvkqqe" path="res://canvas_layer.tscn" id="6_wua0y"]
+
+[node name="Round1" type="Node2D"]
+
+[node name="TileMap" parent="." instance=ExtResource("1_nx4xv")]
+layer_0/tile_data = PackedInt32Array(393215, 262144, 2, 327680, 262144, 2, 327681, 262144, 2, 327682, 262144, 2, 327683, 262144, 2, 327684, 262144, 2, 327685, 262144, 2, 327686, 262144, 2, 327687, 262144, 2, 327688, 262144, 2, 131078, 131072, 5, 196608, 131072, 5, 327678, 262144, 1342177282, 262142, 262144, 1342177282, 196606, 262144, 1342177282, 131070, 262144, 1342177282, 65534, 262144, 1342177282, 262153, 262144, 1610612738, 196617, 262144, 1610612738, 131081, 262144, 1610612738, 65545, 262144, 1610612738, 9, 262144, 1610612738, -65528, 262144, 805306370, -65529, 262144, 805306370, -65530, 262144, 805306370, -65531, 262144, 805306370, -65532, 262144, 805306370, -65533, 262144, 805306370, -65534, 262144, 805306370, -65535, 262144, 805306370, -65536, 262144, 805306370, -1, 262144, 805306370)
+
+[node name="GoalDoor" parent="." instance=ExtResource("2_dyh10")]
+
+[node name="Box" parent="." instance=ExtResource("3_rrpdv")]
+position = Vector2(434, 110)
+
+[node name="CanvasLayer" parent="." instance=ExtResource("6_wua0y")]
+
+[node name="Camera2D" parent="." instance=ExtResource("6_6matc")]
+
+[node name="Player" parent="." instance=ExtResource("2_cinkp")]
+position = Vector2(57, 365)
+SPEED = null
+JUMP_VELOCITY = null
+coyote_time = null
