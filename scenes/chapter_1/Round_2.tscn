@@ -25,6 +25,8 @@ position = Vector2(63, 612)
 
 [node name="Box" parent="." instance=ExtResource("4_xiowj")]
 position = Vector2(583, 219)
+collision_layer = 4
+collision_mask = 7
 mass = 0.17
 
 [node name="GoalDoor" type="Area2D" parent="."]
