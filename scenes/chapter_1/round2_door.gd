@@ -9,7 +9,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-
-
+	
 func _on_body_entered(body: Node2D):
-	get_tree().change_scene_to_file("res://scenes/chapter_1/Round_2.tscn")
+	get_tree().change_scene_to_file("res://scenes/chapter_1/Round_3.tscn")

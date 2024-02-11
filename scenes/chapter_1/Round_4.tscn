@@ -1,74 +1,75 @@
 [gd_scene load_steps=12 format=3 uid="uid://le0cwdixepfc"]
 
-[ext_resource type="TileSet" uid="uid://dmfgu7r3ug1j4" path="res://tilesets/basic_tile_set.tres" id="1_bktbn"]
-[ext_resource type="PackedScene" uid="uid://igwljx8pn5nt" path="res://Prefabs/player.tscn" id="2_pdtx8"]
-[ext_resource type="PackedScene" uid="uid://b178ycvjvkqqe" path="res://canvas_layer.tscn" id="3_xyvfp"]
-[ext_resource type="PackedScene" uid="uid://y3xfgej8vhqe" path="res://Prefabs/platform.tscn" id="4_obbtw"]
-[ext_resource type="Script" path="res://scenes/GoalDoor.gd" id="5_gu4r1"]
-[ext_resource type="Texture2D" uid="uid://blfmpr0vddb21" path="res://Objects/DoorOpen.png" id="6_uipl7"]
-[ext_resource type="Texture2D" uid="uid://dl3uwxqa0d2sq" path="res://Objects/DoorLocked.png" id="8_fcl8w"]
-[ext_resource type="Script" path="res://scenes/door_switcher.gd" id="8_jsjbj"]
-[ext_resource type="Texture2D" uid="uid://c50xnfvjb76qu" path="res://Objects/Switch (1).png" id="9_77lbl"]
-[ext_resource type="Texture2D" uid="uid://b4qctynns74eq" path="res://Objects/Switch (2).png" id="10_xcm86"]
+[ext_resource type="TileSet" uid="uid://dmfgu7r3ug1j4" path="res://tilesets/basic_tile_set.tres" id="1_h7nhs"]
+[ext_resource type="PackedScene" uid="uid://igwljx8pn5nt" path="res://Prefabs/player.tscn" id="2_q2qlv"]
+[ext_resource type="PackedScene" uid="uid://b178ycvjvkqqe" path="res://canvas_layer.tscn" id="3_e0joq"]
+[ext_resource type="PackedScene" uid="uid://y3xfgej8vhqe" path="res://Prefabs/platform.tscn" id="4_jaddf"]
+[ext_resource type="Script" path="res://scenes/chapter_1/round4_door.gd" id="5_vo53r"]
+[ext_resource type="Texture2D" uid="uid://blfmpr0vddb21" path="res://Objects/DoorOpen.png" id="6_d50tm"]
+[ext_resource type="Texture2D" uid="uid://dl3uwxqa0d2sq" path="res://Objects/DoorLocked.png" id="7_tj0l6"]
+[ext_resource type="Script" path="res://scenes/chapter_1/door_switcher.gd" id="8_6cct8"]
+[ext_resource type="Texture2D" uid="uid://b4qctynns74eq" path="res://Objects/Switch (2).png" id="9_i8o6x"]
+[ext_resource type="Texture2D" uid="uid://c50xnfvjb76qu" path="res://Objects/Switch (1).png" id="10_ejojh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qd724"]
-size = Vector2(18, 58.5)
+size = Vector2(56, 74.0625)
 
 [node name="Round2" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2(0.5, 0.5)
-tile_set = ExtResource("1_bktbn")
+tile_set = ExtResource("1_h7nhs")
 format = 2
 layer_0/tile_data = PackedInt32Array(327688, 0, 5, 327689, 0, 5, 327682, 0, 5, 327683, 0, 5, 327684, 0, 5, 327685, 0, 5, 327686, 0, 5, 327687, 0, 5, 327690, 65536, 5, 327680, 262144, 4, 327681, 0, 5, 131073, 131072, 5)
 
-[node name="Player" parent="." instance=ExtResource("2_pdtx8")]
+[node name="Player" parent="." instance=ExtResource("2_q2qlv")]
 position = Vector2(78, 605)
 
-[node name="CanvasLayer" parent="." instance=ExtResource("3_xyvfp")]
+[node name="CanvasLayer" parent="." instance=ExtResource("3_e0joq")]
 
-[node name="Box" parent="." instance=ExtResource("4_obbtw")]
+[node name="Box" parent="." instance=ExtResource("4_jaddf")]
 position = Vector2(392, 349)
 mass = 0.07
 
-[node name="Box2" parent="." instance=ExtResource("4_obbtw")]
+[node name="Box2" parent="." instance=ExtResource("4_jaddf")]
 position = Vector2(590, 273)
 mass = 0.17
 
 [node name="GoalDoor" type="Area2D" parent="."]
 position = Vector2(834, 210)
-script = ExtResource("5_gu4r1")
+script = ExtResource("5_vo53r")
 
 [node name="DoorOpen" type="Sprite2D" parent="GoalDoor"]
 visible = false
 position = Vector2(289.15, 380.4)
 scale = Vector2(0.20107, 0.2)
-texture = ExtResource("6_uipl7")
+texture = ExtResource("6_d50tm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoalDoor"]
-position = Vector2(289, 381)
+position = Vector2(288, 381.938)
 shape = SubResource("RectangleShape2D_qd724")
 
 [node name="DoorLocked" type="Sprite2D" parent="GoalDoor"]
 position = Vector2(289, 380.5)
 scale = Vector2(0.2, 0.200431)
-texture = ExtResource("8_fcl8w")
+texture = ExtResource("7_tj0l6")
 
 [node name="door_switcher" type="Area2D" parent="."]
-script = ExtResource("8_jsjbj")
+script = ExtResource("8_6cct8")
 
 [node name="door_disabled" type="Sprite2D" parent="door_switcher"]
 position = Vector2(179.5, 225.75)
 scale = Vector2(0.263889, 0.231518)
-texture = ExtResource("10_xcm86")
+texture = ExtResource("9_i8o6x")
 
 [node name="door_enabled" type="Sprite2D" parent="door_switcher"]
+visible = false
 position = Vector2(179, 226)
 scale = Vector2(0.253472, 0.230788)
-texture = ExtResource("9_77lbl")
+texture = ExtResource("10_ejojh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="door_switcher"]
-position = Vector2(179, 226)
+position = Vector2(179, 215.969)
 shape = SubResource("RectangleShape2D_qd724")
 
 [connection signal="body_entered" from="GoalDoor" to="GoalDoor" method="_on_body_entered"]

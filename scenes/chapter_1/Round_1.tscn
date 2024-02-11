@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://bmm8swnf5xapd"]
+
+[ext_resource type="PackedScene" uid="uid://dlbf4i8fqvsh3" path="res://Prefabs/tile_map.tscn" id="1_qqf6j"]
+[ext_resource type="Script" path="res://scenes/chapter_1/round1_door.gd" id="2_qf5h0"]
+[ext_resource type="Texture2D" uid="uid://blfmpr0vddb21" path="res://Objects/DoorOpen.png" id="3_n6eup"]
+[ext_resource type="PackedScene" uid="uid://igwljx8pn5nt" path="res://Prefabs/player.tscn" id="4_mprwh"]
+[ext_resource type="PackedScene" uid="uid://b7l33lcqep251" path="res://Prefabs/box.tscn" id="5_bdm1x"]
+[ext_resource type="PackedScene" uid="uid://b178ycvjvkqqe" path="res://canvas_layer.tscn" id="6_kxt8q"]
+[ext_resource type="PackedScene" uid="uid://y3xfgej8vhqe" path="res://Prefabs/platform.tscn" id="7_pmmwh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eoykt"]
+size = Vector2(53, 92)
+
+[node name="Round1" type="Node2D"]
+
+[node name="TileMap" parent="." instance=ExtResource("1_qqf6j")]
+layer_0/tile_data = PackedInt32Array(393215, 0, 3, 327680, 0, 3, 327681, 0, 3, 327682, 0, 3, 327687, 0, 3, 327688, 0, 3, 131078, 196608, 2, 196608, 262144, 4)
+
+[node name="GoalDoor" type="Area2D" parent="."]
+position = Vector2(834, 210)
+script = ExtResource("2_qf5h0")
+
+[node name="DoorOpen" type="Sprite2D" parent="GoalDoor"]
+position = Vector2(277.15, 381.4)
+scale = Vector2(0.20107, 0.2)
+texture = ExtResource("3_n6eup")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalDoor"]
+position = Vector2(277.15, 382.4)
+shape = SubResource("RectangleShape2D_eoykt")
+
+[node name="Player" parent="." instance=ExtResource("4_mprwh")]
+position = Vector2(106, 607)
+
+[node name="Box" parent="." instance=ExtResource("5_bdm1x")]
+position = Vector2(1005, 462)
+mass = 1000.0
+
+[node name="CanvasLayer" parent="." instance=ExtResource("6_kxt8q")]
+
+[node name="Platform" parent="." instance=ExtResource("7_pmmwh")]
+position = Vector2(252, 593)
+mass = 0.1
+
+[connection signal="body_entered" from="GoalDoor" to="GoalDoor" method="_on_body_entered"]

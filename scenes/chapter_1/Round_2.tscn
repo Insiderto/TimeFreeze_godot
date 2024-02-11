@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://ctk0phi1u8x8a"]
 
-[ext_resource type="TileSet" uid="uid://dmfgu7r3ug1j4" path="res://tilesets/basic_tile_set.tres" id="1_1wwj1"]
-[ext_resource type="PackedScene" uid="uid://igwljx8pn5nt" path="res://Prefabs/player.tscn" id="2_1b6my"]
-[ext_resource type="PackedScene" uid="uid://b178ycvjvkqqe" path="res://canvas_layer.tscn" id="3_q6n0p"]
-[ext_resource type="PackedScene" uid="uid://y3xfgej8vhqe" path="res://Prefabs/platform.tscn" id="4_npth4"]
-[ext_resource type="Script" path="res://scenes/GoalDoor.gd" id="5_040eq"]
-[ext_resource type="Texture2D" uid="uid://blfmpr0vddb21" path="res://Objects/DoorOpen.png" id="6_cb1sb"]
+[ext_resource type="TileSet" uid="uid://dmfgu7r3ug1j4" path="res://tilesets/basic_tile_set.tres" id="1_2wx8j"]
+[ext_resource type="PackedScene" uid="uid://igwljx8pn5nt" path="res://Prefabs/player.tscn" id="2_8hjcp"]
+[ext_resource type="PackedScene" uid="uid://b178ycvjvkqqe" path="res://canvas_layer.tscn" id="3_j4w3q"]
+[ext_resource type="PackedScene" uid="uid://y3xfgej8vhqe" path="res://Prefabs/platform.tscn" id="4_xiowj"]
+[ext_resource type="Script" path="res://scenes/chapter_1/round2_door.gd" id="5_e7yp3"]
+[ext_resource type="Texture2D" uid="uid://blfmpr0vddb21" path="res://Objects/DoorOpen.png" id="6_4c63a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qd724"]
 size = Vector2(53, 92)
@@ -14,27 +14,27 @@ size = Vector2(53, 92)
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2(0.5, 0.5)
-tile_set = ExtResource("1_1wwj1")
+tile_set = ExtResource("1_2wx8j")
 format = 2
 layer_0/tile_data = PackedInt32Array(327680, 262144, 2, 327681, 262144, 2, 327682, 262144, 2, 327683, 262144, 2, 327684, 262144, 2, 327685, 262144, 2, 327686, 262144, 2, 327687, 262144, 2, 327688, 262144, 2, 327689, 262144, 2, 393215, 262144, 2, 393214, 262144, 2, 262146, 262144, 4, 196615, 65536, 5, 196614, 0, 5)
 
-[node name="Player" parent="." instance=ExtResource("2_1b6my")]
+[node name="Player" parent="." instance=ExtResource("2_8hjcp")]
 position = Vector2(63, 612)
 
-[node name="CanvasLayer" parent="." instance=ExtResource("3_q6n0p")]
+[node name="CanvasLayer" parent="." instance=ExtResource("3_j4w3q")]
 
-[node name="Box" parent="." instance=ExtResource("4_npth4")]
+[node name="Box" parent="." instance=ExtResource("4_xiowj")]
 position = Vector2(583, 219)
 mass = 0.17
 
 [node name="GoalDoor" type="Area2D" parent="."]
 position = Vector2(834, 210)
-script = ExtResource("5_040eq")
+script = ExtResource("5_e7yp3")
 
 [node name="DoorOpen" type="Sprite2D" parent="GoalDoor"]
 position = Vector2(144.15, 125.4)
 scale = Vector2(0.20107, 0.2)
-texture = ExtResource("6_cb1sb")
+texture = ExtResource("6_4c63a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoalDoor"]
 position = Vector2(144.15, 126.4)
