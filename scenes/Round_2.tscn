@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctk0phi1u8x8a"]
+[gd_scene load_steps=7 format=3 uid="uid://ctk0phi1u8x8a"]
 
 [ext_resource type="TileSet" uid="uid://dmfgu7r3ug1j4" path="res://tilesets/basic_tile_set.tres" id="1_1wwj1"]
 [ext_resource type="PackedScene" uid="uid://igwljx8pn5nt" path="res://Prefabs/player.tscn" id="2_1b6my"]
 [ext_resource type="PackedScene" uid="uid://b178ycvjvkqqe" path="res://canvas_layer.tscn" id="3_q6n0p"]
+[ext_resource type="PackedScene" uid="uid://b7l33lcqep251" path="res://Prefabs/box.tscn" id="4_vypkg"]
+[ext_resource type="PackedScene" uid="uid://4wvdksa5rwuu" path="res://Prefabs/camera_2d.tscn" id="5_6k4t1"]
+[ext_resource type="PackedScene" uid="uid://dg34on4u4lbdu" path="res://Prefabs/goal_door.tscn" id="5_h2ovt"]
 
 [node name="Round2" type="Node2D"]
 
@@ -10,9 +13,22 @@
 scale = Vector2(0.5, 0.5)
 tile_set = ExtResource("1_1wwj1")
 format = 2
-layer_0/tile_data = PackedInt32Array(327680, 262144, 2, 327681, 262144, 2, 327682, 262144, 2, 327683, 262144, 2, 327684, 262144, 2, 327685, 262144, 2, 327686, 262144, 2, 327687, 262144, 2, 327688, 262144, 2, 327689, 262144, 2, 393215, 262144, 2, 393214, 262144, 2)
+layer_0/tile_data = PackedInt32Array(327680, 262144, 2, 327681, 262144, 2, 327682, 262144, 2, 327683, 262144, 2, 327684, 262144, 2, 327685, 262144, 2, 327686, 262144, 2, 327687, 262144, 2, 327688, 262144, 2, 327689, 262144, 2, 393215, 262144, 2, 393214, 262144, 2, 327678, 0, 1342177285, 262142, 0, 1342177285, 196606, 0, 1342177285, 131070, 0, 1342177285, 65534, 0, 1342177285, -2, 0, 1342177285, -1, 0, 805306373, -65536, 0, 805306373, -65535, 0, 805306373, -65534, 0, 805306373, -65533, 0, 805306373, -65532, 0, 805306373, -65531, 0, 805306373, -65530, 0, 805306373, -65529, 0, 805306373, -65528, 0, 805306373, -65527, 0, 805306373, 9, 0, 1610612741, 65545, 0, 1610612741, 131081, 0, 1610612741, 196617, 0, 1610612741, 262153, 0, 1610612741)
 
 [node name="Player" parent="." instance=ExtResource("2_1b6my")]
 position = Vector2(63, 612)
 
 [node name="CanvasLayer" parent="." instance=ExtResource("3_q6n0p")]
+
+[node name="Box" parent="." instance=ExtResource("4_vypkg")]
+position = Vector2(537, 602)
+lock_rotation = true
+
+[node name="Box2" parent="." instance=ExtResource("4_vypkg")]
+position = Vector2(398, 109)
+
+[node name="Camera2D" parent="." instance=ExtResource("5_6k4t1")]
+
+[node name="GoalDoor" parent="." instance=ExtResource("5_h2ovt")]
+position = Vector2(707, 280)
+next_level = "res://scenes/Round_1.tscn"

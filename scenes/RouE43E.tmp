@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://bmm8swnf5xapd"]
+
+[ext_resource type="PackedScene" uid="uid://dlbf4i8fqvsh3" path="res://Prefabs/tile_map.tscn" id="1_nx4xv"]
+[ext_resource type="PackedScene" uid="uid://igwljx8pn5nt" path="res://Prefabs/player.tscn" id="2_cinkp"]
+[ext_resource type="PackedScene" uid="uid://b7l33lcqep251" path="res://Prefabs/box.tscn" id="3_rrpdv"]
+[ext_resource type="Script" path="res://scenes/GoalDoor.gd" id="4_bb1p4"]
+[ext_resource type="Texture2D" uid="uid://blfmpr0vddb21" path="res://Objects/DoorOpen.png" id="4_yc44m"]
+[ext_resource type="PackedScene" uid="uid://b178ycvjvkqqe" path="res://canvas_layer.tscn" id="6_wua0y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eoykt"]
+size = Vector2(53, 92)
+
+[node name="Round1" type="Node2D"]
+
+[node name="TileMap" parent="." instance=ExtResource("1_nx4xv")]
+
+[node name="GoalDoor" type="Area2D" parent="."]
+position = Vector2(834, 210)
+script = ExtResource("4_bb1p4")
+
+[node name="DoorOpen" type="Sprite2D" parent="GoalDoor"]
+scale = Vector2(0.20107, 0.2)
+texture = ExtResource("4_yc44m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalDoor"]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_eoykt")
+
+[node name="Player" parent="." instance=ExtResource("2_cinkp")]
+position = Vector2(64, 365)
+
+[node name="Box" parent="." instance=ExtResource("3_rrpdv")]
+position = Vector2(434, 110)
+
+[node name="CanvasLayer" parent="." instance=ExtResource("6_wua0y")]
+
+[connection signal="body_entered" from="GoalDoor" to="GoalDoor" method="_on_body_entered"]

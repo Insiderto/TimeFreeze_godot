@@ -88,4 +88,12 @@ func handle_collisions(speed):
 		var c = get_slide_collision(i)		
 		if c.get_collider() is RigidBody2D:
 			var collider = c.get_collider() as RigidBody2D
-			collider.apply_central_impulse( -c.get_normal() * (speed / 200))
+			var push_normal = -c.get_normal();
+			var push_force = (speed / 200);
+			var push_angle = rad_to_deg(push_normal.angle_to(Vector2.UP))
+			if  abs(0 - abs(push_angle)) < 2:
+				push_force *= 11
+				
+			if abs(180 - push_angle) < 2:
+				push_force = 3
+			collider.apply_central_impulse(push_normal * push_force)

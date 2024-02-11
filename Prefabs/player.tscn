@@ -11,6 +11,7 @@ colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 0)
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(119, 294)
+collision_mask = 14
 script = ExtResource("1_qfbib")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
