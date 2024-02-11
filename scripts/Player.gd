@@ -11,16 +11,30 @@ var normal_gravity = ProjectSettings.get_setting("physics/2d/default_gravity")  
 var coyote_time_timer = 0.0 # Таймер для отслеживания "coyote time"
 var last_time_scale = 1.0
 var energy = 100;
+var freeze_time_sound_start = AudioStreamPlayer.new()
+var freeze_time_sound_end = AudioStreamPlayer.new()
 
+signal fade_music_start
 
 func _ready():
+	freeze_time_sound_start.stream = load("res://sounds/switch_time/boom.mp3")
+	freeze_time_sound_end.stream = load("res://sounds/switch_time/reverse_boom.mp3")
+	add_child(freeze_time_sound_start)
+	add_child(freeze_time_sound_end)
 	Engine.time_scale = 1
 	progressBar.value = energy
-	
+
 func _input(event):
 	if event.is_action_pressed("freeze_time") && energy > 0:
+		freeze_time_sound_start.play()
+		freeze_time_sound_end.stop()
+		BackgroundMusic.fade_out()
 		Engine.time_scale = 0.05
 	if event.is_action_released("freeze_time"):
+		if energy > 0:
+			freeze_time_sound_start.stop()
+			freeze_time_sound_end.play()
+		BackgroundMusic.fade_in()
 		Engine.time_scale = 1
 	if event.is_action_pressed("restart_game"):
 		get_tree().reload_current_scene()

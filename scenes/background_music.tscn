@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://5dfudk55fxix"]
+
+[ext_resource type="AudioStream" uid="uid://bhvq3vsyyh2uh" path="res://sounds/background/steampunk-victorian-orchestra-183196.mp3" id="1_p3as0"]
+[ext_resource type="Script" path="res://scenes/background_music.gd" id="2_jp75p"]
+
+[node name="BackgroundMusic" type="AudioStreamPlayer"]
+stream = ExtResource("1_p3as0")
+autoplay = true
+script = ExtResource("2_jp75p")

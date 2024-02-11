@@ -15,6 +15,10 @@ run/main_scene="res://scenes/chapter_1/Round_1.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+BackgroundMusic="*res://scenes/background_music.tscn"
+
 [input]
 
 freeze_time={
